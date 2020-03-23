@@ -16,13 +16,16 @@ include_periodicity, hours_per_workday, days_per_workweek, working_weeks_per_yea
 
 \item{salary_range_handling}{A method of handling salary ranges. Defaults to returning an average of the range; can also be set to "max" or "min".}
 
-\item{include_periodicity}{Set to TRUE to return an additional column stating the detected peridicity in the character string.}
+\item{include_periodicity}{Set to TRUE to return an additional column stating the detected peridicity in the character string. Periodicity is assumed to be 'Annual' unless evidence is found to the contrary.}
 
 \item{hours_per_workday}{Set assumed number of hours in the workday. Only affects annualisation of rates indentified as Daily. Default is 8 hours.}
 
 \item{days_per_workweek}{Set assumed number of days per workweek. Only affects annualisation of rates indentified as Daily. Default is 5 days.}
 
-\item{working_weeks_per_year}{Set assumed number of working weeks in the year. Only affects annualisation of rates indentified as Daily or Weekly. Default is 48 weeks.}
+\item{working_weeks_per_year}{Set assumed number of working weeks in the year. Only affects annualisation of rates indentified as Daily or Weekly. Default is 50 weeks.}
+}
+\value{
+A data.frame of 1 column, or 2 columns if include_periodicity is set to TRUE
 }
 \description{
 Extract numeric salary from text data. `extract_salary` automatically converts weekly and hourly rates to amounts per annum.
@@ -57,7 +60,8 @@ annual_salaries <- c("$160,000 - $180000.00 per annum",
 
 extract_salary(annual_salaries)
 # 170000 170000 150000  80000  53338  40008  70000  56055  90000
-
+# Note the fifth, sixth, and eighth elements are averages including '15' (undesirable)
+# Using exclude_below parameter avoids this (see below)
 
 # Automatically detect, extract, and annualise daily rates
 daily_rates <- c("$200 daily", "$400 - $600 per day", "Day rate negotiable dependent on experience")
@@ -69,7 +73,7 @@ extract_salary(daily_rates)
 hourly_rates <- c("$80 - $100+ per hour", "APS6/EL1 hourly rate contract")
 extract_salary(hourly_rates)
 # 172800   6720
-# Note 6720 is undesirable. Setting the lower and upper bounds sensibly avoids this
+# Note 6720 is undesirable. Setting the exclude_below and exclude_above sensibly avoids this
 
 
 salaries <- c(annual_salaries, daily_rates, hourly_rates)
@@ -78,7 +82,7 @@ salaries <- c(annual_salaries, daily_rates, hourly_rates)
 # Setting lower and upper bounds provides a catch-all to remove unrealistic results
 # Out of bounds values will be converted to NA
 extract_salary(salaries, exclude_below = 20000, exclude_above = 600000)
-# 170000 170000 150000  80000  53338  40008  70000  56055  90000  48000 120000     NA 172800     NA
+# 170000 170000 150000  80000  80000  80000  70000  84074  90000  48000 120000     NA 172800     NA
 
 
 # extract_salary automatically annualises hourly and daily rates
@@ -86,30 +90,31 @@ extract_salary(salaries, exclude_below = 20000, exclude_above = 600000)
 # days per workweek, and hours per workday
 # And the assumed number of hours per workday can be changed from the default (8)
 # The assumed number of workdays per workweek can be changed from the default (5)
-# The assumed number of working weeks in year can be changed from the default (48)
+# The assumed number of working weeks in year can be changed from the default (50)
 # E.g.
-extract_salary(salaries, hours_per_workday = 7, days_per_workweek = 4, working_weeks_per_year = 46)
-# 170000 170000 150000  80000  53338  40008  70000  56055  90000  36800  92000     NA 115920   4508
+extract_salary(salaries, hours_per_workday = 7, days_per_workweek = 4,
+               working_weeks_per_year = 46, exclude_below = 20000)
+# 170000 170000 150000  80000  53338  40008  70000  56055  90000  36800  92000     NA 115920     NA
 
 
 # To see which salaries were detected as hourly or weekly, set include_periodicity to TRUE
-extract_salary(salaries, include_periodicity = TRUE)
+extract_salary(salaries, include_periodicity = TRUE, exclude_below = 20000)
 
 # salary periodicity
 # 1  170000      Annual
 # 2  170000      Annual
 # 3  150000      Annual
 # 4   80000      Annual
-# 5   53338      Annual
-# 6   40008      Annual
+# 5   80000      Annual
+# 6   80000      Annual
 # 7   70000      Annual
-# 8   56055      Annual
+# 8   84074      Annual
 # 9   90000      Annual
 # 10  48000       Daily
 # 11 120000       Daily
 # 12     NA       Daily
 # 13 172800      Hourly
-# 14   6720      Hourly
+# 14     NA      Hourly
 
 
 }
