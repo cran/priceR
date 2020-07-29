@@ -1,7 +1,7 @@
 Package: priceR
 Type: Package
-Title: Microeconomics and Pricing Tools
-Version: 0.1.3
+Title: Economics and Pricing Tools
+Version: 0.1.4
 Imports: dplyr, gsubfn, stringr, purrr, jsonlite, stats, lubridate,
         curl, stringi
 Author: Steve Condylios [aut, cre] (<https://orcid.org/0000-0003-0599-844X>)
@@ -9,14 +9,17 @@ Maintainer: Steve Condylios <steve.condylios@gmail.com>
 BugReports: https://github.com/stevecondylios/priceR/issues
 License: MIT + file LICENSE
 URL: https://github.com/stevecondylios/priceR
-Description: Functions to aid in microeconomic analysis and handling of price and currency data. 
-    This includes extraction of relevant data (e.g. from World Bank API, and other sources), data cleaning/parsing, and standardisation.
-    Inflation adjustment calculations as found in Principles of Macroeconomics by Gregory Mankiw et al (2014).  
+Description: Functions to aid in micro and macro economic analysis and handling of price and
+    currency data. Includes extraction of relevant inflation and exchange rate data from World Bank
+    API, data cleaning/parsing, and standardisation. Inflation adjustment
+    calculations as found in Principles of Macroeconomics by Gregory Mankiw et al (2014). Current
+    and historical end of day exchange rates for 171 currencies from the European Central Bank
+    Statistical Data Warehouse (2020) <https://sdw.ecb.europa.eu/curConverter.do>.
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Suggests: testthat
 NeedsCompilation: no
-Packaged: 2020-06-21 12:15:22 UTC; st
+Packaged: 2020-07-29 12:36:20 UTC; st
 Repository: CRAN
-Date/Publication: 2020-06-21 12:30:02 UTC
+Date/Publication: 2020-07-29 13:00:02 UTC
