@@ -1,7 +1,7 @@
 Package: priceR
 Type: Package
 Title: Economics and Pricing Tools
-Version: 0.1.4
+Version: 0.1.5
 Imports: dplyr, gsubfn, stringr, purrr, jsonlite, stats, lubridate,
         curl, stringi
 Author: Steve Condylios [aut, cre] (<https://orcid.org/0000-0003-0599-844X>)
@@ -20,6 +20,6 @@ LazyData: true
 RoxygenNote: 7.1.1
 Suggests: testthat
 NeedsCompilation: no
-Packaged: 2020-07-29 12:36:20 UTC; st
+Packaged: 2020-10-02 18:33:45 UTC; st
 Repository: CRAN
-Date/Publication: 2020-07-29 13:00:02 UTC
+Date/Publication: 2020-10-03 06:00:10 UTC
