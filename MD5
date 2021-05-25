@@ -1,10 +1,10 @@
-30a82eb9654e4fc044e620715094ce0b *DESCRIPTION
+21751981b8dcbcf4f3bf75e9aa957947 *DESCRIPTION
 7ca76ced37bb437dcf9f1b5970f8e049 *LICENSE
 c54bf04e99e9eeb6b3dcf755124e485f *NAMESPACE
 5defa07b820bebb5455bffeac701d69d *R/adjust_for_inflation.R
 5e35c0e5e09249e71c3f3f29defc39c6 *R/currencies.R
 a1fb051620ff15f4324ba8ab96207bb2 *R/extract_salary.R
-36759c3888b3763a013246afc5f43197 *R/format.R
+b2ae0bf3a20a2545aa63afbe76231e56 *R/format.R
 934b8fea6e5e33fdd8bd83b04cebf1fb *R/priceR.R
 657753c601708cc9d809ce91495419d1 *R/round_to_nearest.R
 c7fe467df7f4ed189d80b50e1c2078aa *README.md
@@ -17,8 +17,8 @@ fd0467e05c2d639d7ddaf9e29edcb535 *man/adjust_for_inflation.Rd
 a023569369f1d40d58c8f71fbacf26a2 *man/display_api_info.Rd
 80a690e4bce3edfd2cc3a6693b6f676e *man/exchange_rate_latest.Rd
 05df6f652d7f514d7ac101964a2390ba *man/extract_salary.Rd
-a4e02ab640f214c279c7af230f4fd092 *man/format_currency.Rd
-862fdf0d90354d7d00ef381b0931dc58 *man/format_dollars.Rd
+d1f0d73d72d7df0ba39d79ebb03b9010 *man/format_currency.Rd
+0bf942e935e2de6d2bd3ac43a98593ee *man/format_dollars.Rd
 0270ac05f87577876bd1af817a75c492 *man/historical_exchange_rates.Rd
 c8f1f7ce1551c13c102d2fd6cb2a25b5 *man/make_dates.Rd
 2eb7c2f69dc32a1b465a66216b28c2f1 *man/retrieve_historical_rates.Rd
@@ -31,4 +31,4 @@ fdb128b01127de76f51d23a22eabcdac *man/url_all_results.Rd
 c165b96cd8573deea984c1d74e413df3 *tests/testthat.R
 d05fcfaae0d96d291a9e36934672392a *tests/testthat/helper-adjust_for_inflation.R
 9b1ccd9f42a22285655f115a55f2617f *tests/testthat/test_adjust_for_inflation.R
-e65e310790f342c601868e23667f5bbf *tests/testthat/test_format.R
+040f70aa4a155fbd724f5fd81c3d5023 *tests/testthat/test_format.R
