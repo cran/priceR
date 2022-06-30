@@ -1,22 +1,22 @@
 
-# priceR
+# priceR <a href='https://github.com/stevecondylios/priceR'><img src='man/figures/priceR.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/priceR)](https://cran.r-project.org/package=priceR)
-[![Travis build
-status](https://travis-ci.org/stevecondylios/priceR.svg?branch=master)](https://travis-ci.org/stevecondylios/priceR)
+[![R build
+status](https://github.com/stevecondylios/priceR/workflows/R-CMD-check/badge.svg)](https://github.com/stevecondylios/priceR/actions?workflow=R-CMD-check)
 <!-- badges: end -->
 
 `priceR` contains 4 types of capabilties:
 
-  - *Exchange Rates* - easily retrieve exchange rates for immediate use
-  - *Inflation* - easily inflate past (nominal) values into present day
+-   *Exchange Rates* - easily retrieve exchange rates for immediate use
+-   *Inflation* - easily inflate past (nominal) values into present day
     (real) prices
-  - *Regular Expressions* - easily extract common pricing patterns from
+-   *Regular Expressions* - easily extract common pricing patterns from
     free text
-  - *Formatting* - easily handle currencies in written work, including
+-   *Formatting* - easily handle currencies in written work, including
     Rmarkdown documents
 
 ### Installation
@@ -38,19 +38,19 @@ exchange_rate_latest("USD") %>%
   head(10)
 ```
 
-    ## Daily USD exchange rate as at end of day 2020-07-31 GMT
+    ## Daily USD exchange rate as at end of day 2022-06-17 GMT
 
     ##    currency one_usd_is_equivalent_to
-    ## 1       AED                  3.67300
-    ## 2       AFN                 76.80003
-    ## 3       ALL                105.30020
-    ## 4       AMD                481.61635
-    ## 5       ANG                  1.79471
-    ## 6       AOA                552.92014
-    ## 7       ARS                 72.25342
-    ## 8       AUD                  1.38494
-    ## 9       AWG                  1.80000
-    ## 10      AZN                  1.70250
+    ## 1       AED                  3.66982
+    ## 2       AFN                 89.28219
+    ## 3       ALL                113.54182
+    ## 4       AMD                421.88487
+    ## 5       ANG                  1.80190
+    ## 6       AOA                433.64088
+    ## 7       ARS                122.82785
+    ## 8       AUD                  1.42343
+    ## 9       AWG                  1.79911
+    ## 10      AZN                  1.69928
 
 ### View available currencies
 
@@ -96,6 +96,8 @@ head(cur)
 
 ``` r
 library(ggplot2)
+library(ggthemes)
+library(ggrepel)
 
 cur %>% 
   rename(aud_to_usd = one_AUD_equivalent_to_x_USD,
@@ -103,7 +105,32 @@ cur %>%
   pivot_longer(c("aud_to_usd", "aud_to_eur")) %>% 
   mutate(date = as.Date(date)) %>% 
   ggplot(aes(x=date, y = value, colour=name)) +
-  geom_line()
+  geom_line(size=1) + 
+  scale_color_manual(
+    breaks = c("aud_to_usd", "aud_to_eur"), # Sets order in legend
+    labels = c( "AUD to USD", "AUD to EUR"), # Pretty names in legend
+    values = c("#02506A", "#03A5DC") # Sets line/legend colours
+    ) + 
+  scale_x_date(date_labels = "%b %Y", date_breaks = "6 month") +
+  scale_y_continuous(
+    expand = c(0, 0), 
+    limits = c(0, 1.5)
+    ) +
+  labs(
+    title = "AUD to USD and EUR 2010 to 2020",
+    subtitle = "Plotting the Australian Dollar against the USD and Euro",
+    y = "Exchange Rate"
+    ) +
+  theme_economist() + 
+  theme(
+    plot.title = element_text(size = 18, margin=margin(0,0,8,0)),
+    axis.title.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+    axis.title.y = element_text(vjust = 3.5),
+    legend.position="bottom",
+    legend.title = element_blank()
+    ) 
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
@@ -115,12 +142,24 @@ cur %>%
          aud_to_eur = one_AUD_equivalent_to_x_EUR) %>%  
   mutate(date = as.Date(date)) %>% 
   ggplot(aes(x = date, y = aud_to_usd, group = 1)) +
-  geom_line() +
-  geom_smooth(method = 'loess') + 
-  theme(axis.title.x=element_blank(),
-        axis.ticks.x=element_blank()) + 
-  scale_x_date(date_labels = "%b-%Y", date_breaks = "1 month") +
-  ggtitle("AUD to USD over last 200 days")
+  geom_line(colour = "#F15B40") +
+  geom_smooth(method = 'loess', colour="#03A5DC") + 
+  scale_x_date(date_labels = "%b %Y", date_breaks = "1 month") +
+  labs(
+    title = "AUD to USD over last 200 days",
+    subtitle = "AUD to USD Exchange Rate; Polynomial regression trendline",
+    y = "Exchange Rate"
+    ) +
+  theme_economist() + 
+  theme(
+    plot.title = element_text(size = 18, margin=margin(0,0,8,0)),
+    axis.title.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+    axis.title.y = element_text(vjust = 3.5),
+    legend.position="bottom",
+    legend.title = element_blank()
+    ) 
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
@@ -134,10 +173,24 @@ cur %>%
   ggplot(aes(x = date, y = aud_to_eur, group = 1)) +
   geom_line() +
   geom_smooth(method = 'loess', se = TRUE) + 
-  theme(axis.title.x=element_blank(),
-        axis.ticks.x=element_blank()) + 
-  scale_x_date(date_labels = "%Y", date_breaks = "1 year")  +
-  ggtitle("AUD to EUR over last 8 years")
+  geom_line(colour = "#02506A") +
+  geom_smooth(method = 'loess', colour="#03A5DC") + 
+  scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
+  labs(
+    title = "AUD to EUR over last 8 years",
+    subtitle = "AUD to EUR Exchange Rate; Polynomial regression trendline",
+    y = "Exchange Rate"
+    ) +
+  theme_economist() + 
+  theme(
+    plot.title = element_text(size = 18, margin=margin(0,0,8,0)),
+    axis.title.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+    axis.title.y = element_text(vjust = 3.5),
+    legend.position="bottom",
+    legend.title = element_blank()
+    ) 
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
@@ -159,9 +212,9 @@ df <- data.frame(years, nominal_prices)
 df$in_2008_dollars <- adjust_for_inflation(nominal_prices, years, "US", to_date = 2008)
 ```
 
-    ## Generating URL to request all 304 results
+    ## Generating URL to request all 299 results
     ## Retrieving inflation data for US 
-    ## Generating URL to request all 60 results
+    ## Generating URL to request all 62 results
 
 ``` r
 df
@@ -231,19 +284,25 @@ format_dollars(c("445.50", "199.99"), digits = 2)
 
     ## [1] "$445.50" "$199.99"
 
+# priceR in action
+
+-   [*Converting Between Currencies Using
+    priceR*](https://www.bryanshalloway.com/2022/06/16/converting-between-currencies-using-pricer/)
+    by Bryan Shalloway
+
 # Issues and Feature Requests
 
 When reporting an issue, please include:
 
-  - Example code that reproduces the **observed** behavior.
-  - An explanation of what the **expected** behavior is.
-  - A specific url you’re attempting to retrieve R code from (if that’s
+-   Example code that reproduces the **observed** behavior.
+-   An explanation of what the **expected** behavior is.
+-   A specific url you’re attempting to retrieve R code from (if that’s
     what your issue concerns)
 
 For feature requests, raise an issue with the following:
 
-  - The desired functionality
-  - Example inputs and desired output
+-   The desired functionality
+-   Example inputs and desired output
 
 # Pull Requests
 
@@ -253,6 +312,6 @@ email me with your idea.
 Any new functions should follow the conventions established by the the
 package’s existing functions. Please ensure
 
-  - Functions are sensibly named
-  - The **intent** of the contribution is clear
-  - At least one example is provided in the documentation
+-   Functions are sensibly named
+-   The **intent** of the contribution is clear
+-   At least one example is provided in the documentation

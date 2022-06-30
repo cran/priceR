@@ -1,10 +1,14 @@
 Package: priceR
 Type: Package
 Title: Economics and Pricing Tools
-Version: 0.1.6
+Version: 0.1.62
 Imports: dplyr, gsubfn, stringr, purrr, jsonlite, stats, lubridate,
         curl, stringi
-Author: Steve Condylios [aut, cre] (<https://orcid.org/0000-0003-0599-844X>)
+Authors@R: person(given="Steve", family="Condylios", 
+    role=c("aut", "cre"), email="steve.condylios@gmail.com", 
+    comment("https://orcid.org/0000-0003-0599-844X"),
+    person(given="Bruno", family="Mioto", role="ctb", email="brunomioto97@gmail.com")
+    )
 Maintainer: Steve Condylios <steve.condylios@gmail.com>
 BugReports: https://github.com/stevecondylios/priceR/issues
 License: MIT + file LICENSE
@@ -16,9 +20,10 @@ Description: Functions to aid in micro and macro economic analysis and handling 
     and historical end of day exchange rates for 171 currencies from the European Central Bank
     Statistical Data Warehouse (2020) <https://sdw.ecb.europa.eu/curConverter.do>.
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: testthat
 NeedsCompilation: no
-Packaged: 2021-05-25 06:21:32 UTC; st
+Packaged: 2022-06-29 10:59:45 UTC; st
+Author: Steve Condylios [aut, cre] (Bruno Mioto <brunomioto97@gmail.com> [ctb])
 Repository: CRAN
-Date/Publication: 2021-05-25 06:40:05 UTC
+Date/Publication: 2022-06-30 07:30:02 UTC

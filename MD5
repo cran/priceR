@@ -1,4 +1,4 @@
-21751981b8dcbcf4f3bf75e9aa957947 *DESCRIPTION
+0b756eee2bf48d93ae2cd9eaf0cb9aa2 *DESCRIPTION
 7ca76ced37bb437dcf9f1b5970f8e049 *LICENSE
 c54bf04e99e9eeb6b3dcf755124e485f *NAMESPACE
 5defa07b820bebb5455bffeac701d69d *R/adjust_for_inflation.R
@@ -7,7 +7,7 @@ a1fb051620ff15f4324ba8ab96207bb2 *R/extract_salary.R
 b2ae0bf3a20a2545aa63afbe76231e56 *R/format.R
 934b8fea6e5e33fdd8bd83b04cebf1fb *R/priceR.R
 657753c601708cc9d809ce91495419d1 *R/round_to_nearest.R
-c7fe467df7f4ed189d80b50e1c2078aa *README.md
+a8fbdbdfff99d5de5bb7111997f105dd *README.md
 fd0467e05c2d639d7ddaf9e29edcb535 *man/adjust_for_inflation.Rd
 73caf99efabd2b4617ba8bfe3c6ee036 *man/convert_to_iso2Code.Rd
 234a88988a4d4fdd3adb9ed2aebb403e *man/country_input_type.Rd
@@ -17,6 +17,9 @@ fd0467e05c2d639d7ddaf9e29edcb535 *man/adjust_for_inflation.Rd
 a023569369f1d40d58c8f71fbacf26a2 *man/display_api_info.Rd
 80a690e4bce3edfd2cc3a6693b6f676e *man/exchange_rate_latest.Rd
 05df6f652d7f514d7ac101964a2390ba *man/extract_salary.Rd
+af80c476b482aee0f2fe936dcf78196a *man/figures/priceR.png
+3eb48c637e0e1b40fdb3b36aa4519347 *man/figures/priceR.svg
+2fb96246306814c39cf4498a8da2c22c *man/figures/sticker.R
 d1f0d73d72d7df0ba39d79ebb03b9010 *man/format_currency.Rd
 0bf942e935e2de6d2bd3ac43a98593ee *man/format_dollars.Rd
 0270ac05f87577876bd1af817a75c492 *man/historical_exchange_rates.Rd
@@ -29,6 +32,6 @@ c33af7b737f8b2471e7c001710ad349d *man/round_up_to_nearest.Rd
 7a22b80fe6dd0dc4ce03c531567b4109 *man/show_countries.Rd
 fdb128b01127de76f51d23a22eabcdac *man/url_all_results.Rd
 c165b96cd8573deea984c1d74e413df3 *tests/testthat.R
-d05fcfaae0d96d291a9e36934672392a *tests/testthat/helper-adjust_for_inflation.R
-9b1ccd9f42a22285655f115a55f2617f *tests/testthat/test_adjust_for_inflation.R
+3ad3b2dd93b5142f9b80a17642394064 *tests/testthat/helper-adjust_for_inflation.R
+3f546a524749bcb439b39d16e70c2572 *tests/testthat/test_adjust_for_inflation.R
 040f70aa4a155fbd724f5fd81c3d5023 *tests/testthat/test_format.R
