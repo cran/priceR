@@ -252,7 +252,7 @@ make_dates <- function(start_date, end_date, n_days) {
 
     `+`(1)
 
-  # In cases where we don't need mutliple periods,
+  # In cases where we don't need multiple periods,
   # simply return a 1 row data.frame
 
   if(range_in_days <= n_days) {
@@ -389,27 +389,61 @@ retrieve_historical_rates <- function(from, to, start_date, end_date) {
 #'
 #' @examples
 #' \dontrun{
-#' # Note date range >365 days', and returns 912 rows (as expected)
-#' historical_exchange_rates("USD", to = "AUD", start_date = "2018-01-01", end_date = "2020-06-30")
-#'
-#' historical_exchange_rates("USD", to = "AUD",
-#'                           start_date = "2020-01-01", end_date = "2020-06-30")
-#'
-#'
-#' historical_exchange_rates("AUD", to = "USD",
+#' Retrieve AUD to USD exchange rates
+#' au <- historical_exchange_rates(from = "AUD", to = "USD",
 #'                           start_date = "2010-01-01", end_date = "2020-06-30")
 #'
-#'
-#' historical_exchange_rates("AUD", to = "USD",
+#' # Retrieve AUD to EUR exchange rates
+#' ae <- historical_exchange_rates(from = "AUD", to = "EUR",
 #'                           start_date = "2010-01-01", end_date = "2020-06-30")
 #'
+#' # Combine
+#' cur <- au %>% left_join(ae, by = "date")
 #'
-#' }
+#' head(cur)
+#'}
 #'
 #'
 
 
 historical_exchange_rates <- function(from, to, start_date, end_date) {
+
+  # Validate currencies
+
+  # Retrieved via: priceR::currencies()
+  # Hard coded to avoid excessive API calls
+  valid_currency_codes <- c(
+    "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG",
+    "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND",
+    "BOB", "BRL", "BSD", "BTC", "BTN", "BWP", "BYN", "BZD", "CAD",
+    "CDF", "CHF", "CLF", "CLP", "CNH", "CNY", "COP", "CRC", "CUC",
+    "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN",
+    "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GGP", "GHS", "GIP",
+    "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF",
+    "IDR", "ILS", "IMP", "INR", "IQD", "IRR", "ISK", "JEP", "JMD",
+    "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD",
+    "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LYD", "MAD",
+    "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRO", "MRU", "MUR",
+    "MVR", "MWK", "MXN", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK",
+    "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN",
+    "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR",
+    "SDG", "SEK", "SGD", "SHP", "SLL", "SOS", "SRD", "SSP", "STD",
+    "STN", "SVC", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP",
+    "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "UYU", "UZS",
+    "VEF", "VES", "VND", "VUV", "WST", "XAF", "XAG", "XAU", "XCD",
+    "XDR", "XOF", "XPD", "XPF", "XPT", "YER", "ZAR", "ZMW", "ZWL"
+    )
+
+  from = toupper(from)
+  to = toupper(to)
+
+  if (!all(c(from, to) %in% valid_currency_codes)){
+    invalid_currencies <- c(from, to)[which(!c(from, to) %in% valid_currency_codes)]
+    error_message = paste0("Invalid currency code(s): " ,"\"", paste0(invalid_currencies, collapse="\", \""), "\"",
+". Run currencies()
+  to view all ", length(valid_currency_codes), " valid currency codes.")
+    stop(error_message)
+  }
 
   display_api_info()
 
@@ -432,4 +466,33 @@ historical_exchange_rates <- function(from, to, start_date, end_date) {
 
 
 
+#'
+#' Provides information for 191 currencies
+#' @name currency_info
+#'
+#' @usage currency_info()
+#'
+#' @return A data.frame containing currency information for 191 currencies.
+#'     Currency information includes: name, iso code, currency symbol (and
+#'     alternative symbols if applicable), subunit, number of subunits per major
+#'     unit, whether the currency symbol ought to appear before or after the
+#'     number of units, display format, html entity, decimal mark,
+#'     thousands separator, iso numeric, and smallest denomination.
+#'
+#' @importFrom jsonlite fromJSON
+#'
+#' @export
+#'
+#' @examples
+#'  \dontrun{
+#' # currency_info <- currency_info()
+#' # # Inspect first 6 rows
+#' # head(currency_info)
+#' }
+
+currency_info <- function() {
+  e <- new.env()
+  currency_info <- load("data/currency_info.rda", envir = e)
+  e$currency_info
+}
 
