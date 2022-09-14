@@ -1,14 +1,14 @@
 Package: priceR
 Type: Package
 Title: Economics and Pricing Tools
-Version: 0.1.64
+Version: 0.1.66
 Imports: dplyr, gsubfn, stringr, purrr, jsonlite, stats, lubridate,
-        curl, stringi
-Authors@R: person(given="Steve", family="Condylios", 
+        curl, stringi, tidyr
+Authors@R: c(person(given="Steve", family="Condylios", 
     role=c("aut", "cre"), email="steve.condylios@gmail.com", 
-    comment("https://orcid.org/0000-0003-0599-844X"),
-    person(given="Bruno", family="Mioto", role="ctb", email="brunomioto97@gmail.com")
-    )
+    comment("https://orcid.org/0000-0003-0599-844X")),
+    person(given="Bruno", family="Mioto", role="ctb", email="brunomioto97@gmail.com"), 
+    person(given = "Bryan", family = "Shalloway", role = "ctb", email = "brshallodev@gmail.com"))
 Maintainer: Steve Condylios <steve.condylios@gmail.com>
 BugReports: https://github.com/stevecondylios/priceR/issues
 License: MIT + file LICENSE
@@ -24,7 +24,9 @@ RoxygenNote: 7.1.2
 Suggests: testthat
 LazyData: true
 NeedsCompilation: no
-Packaged: 2022-09-01 14:28:38 UTC; st
-Author: Steve Condylios [aut, cre] (Bruno Mioto <brunomioto97@gmail.com> [ctb])
+Packaged: 2022-09-14 14:02:52 UTC; st
+Author: Steve Condylios [aut, cre],
+  Bruno Mioto [ctb],
+  Bryan Shalloway [ctb]
 Repository: CRAN
-Date/Publication: 2022-09-01 14:40:02 UTC
+Date/Publication: 2022-09-14 14:30:02 UTC
