@@ -1,7 +1,7 @@
-cac5b3aba606b17801b1ab0bc69353e7 *DESCRIPTION
+147c697d3b4a89b25f7d1a9505a64719 *DESCRIPTION
 7ca76ced37bb437dcf9f1b5970f8e049 *LICENSE
 7bcb08dbb37713957d0e2479fb7b9efa *NAMESPACE
-8cb068c935a643de38b019ca15ed7c36 *R/adjust_for_inflation.R
+ce2c6d45a4b6a42c41d8acfc5c1f9aa1 *R/adjust_for_inflation.R
 c3df43e013c0fbdf6dbc47ea3982e051 *R/currencies.R
 a1fb051620ff15f4324ba8ab96207bb2 *R/extract_salary.R
 b2ae0bf3a20a2545aa63afbe76231e56 *R/format.R
@@ -35,7 +35,7 @@ d46c6e47e205d657327b6e0830dcc32f *man/round_down_to_nearest.Rd
 6c8fd29131d3a3d96582fbe15d4423b7 *man/round_to_nearest.Rd
 c33af7b737f8b2471e7c001710ad349d *man/round_up_to_nearest.Rd
 7a22b80fe6dd0dc4ce03c531567b4109 *man/show_countries.Rd
-fdb128b01127de76f51d23a22eabcdac *man/url_all_results.Rd
+c6ef0b04d288497cf8cbd4f44bd1bc09 *man/url_all_results.Rd
 c165b96cd8573deea984c1d74e413df3 *tests/testthat.R
 3ad3b2dd93b5142f9b80a17642394064 *tests/testthat/helper-adjust_for_inflation.R
 3f546a524749bcb439b39d16e70c2572 *tests/testthat/test_adjust_for_inflation.R

@@ -1,7 +1,7 @@
 Package: priceR
 Type: Package
 Title: Economics and Pricing Tools
-Version: 0.1.66
+Version: 0.1.67
 Imports: dplyr, gsubfn, stringr, purrr, jsonlite, stats, lubridate,
         curl, stringi, tidyr
 Authors@R: c(person(given="Steve", family="Condylios", 
@@ -24,9 +24,9 @@ RoxygenNote: 7.1.2
 Suggests: testthat
 LazyData: true
 NeedsCompilation: no
-Packaged: 2022-09-14 14:02:52 UTC; st
+Packaged: 2022-09-14 20:21:57 UTC; st
 Author: Steve Condylios [aut, cre],
   Bruno Mioto [ctb],
   Bryan Shalloway [ctb]
 Repository: CRAN
-Date/Publication: 2022-09-14 14:30:02 UTC
+Date/Publication: 2022-09-15 09:10:05 UTC
