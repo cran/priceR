@@ -11,13 +11,13 @@ status](https://github.com/stevecondylios/priceR/workflows/R-CMD-check/badge.svg
 
 `priceR` contains 4 types of capabilties:
 
--   *Exchange Rates* - easily retrieve exchange rates for immediate use
--   *Inflation* - easily inflate past (nominal) values into present day
-    (real) prices
--   *Regular Expressions* - easily extract common pricing patterns from
-    free text
--   *Formatting* - easily handle currencies in written work, including
-    Rmarkdown documents
+- *Exchange Rates* - easily retrieve exchange rates for immediate use
+- *Inflation* - easily inflate past (nominal) values into present day
+  (real) prices
+- *Regular Expressions* - easily extract common pricing patterns from
+  free text
+- *Formatting* - easily handle currencies in written work, including
+  Rmarkdown documents
 
 ### Installation
 
@@ -31,6 +31,19 @@ options(scipen = 100); options(digits = 6)
 
 # Exchange rates
 
+### Setup
+
+Set up only takes a minute and is free for 1000 requests per account per
+calendar month.
+
+Go to <https://exchangerate.host/>, create a free account, and replace
+`7e5e3140140bd8e4f4650cc41fc772c0` with your API key in the following,
+and run once per R session.
+
+``` r
+Sys.setenv("EXCHANGERATEHOST_ACCESS_KEY"="7e5e3140140bd8e4f4650cc41fc772c0")
+```
+
 ### Current exchange rates
 
 View the current exchange rates for 170 currencies (see them all by
@@ -41,19 +54,17 @@ exchange_rate_latest("USD") %>%
   head(10)
 ```
 
-    ## Daily USD exchange rate as at end of day 2022-09-01 GMT
-
-    ##    currency one_usd_is_equivalent_to
-    ## 1       AED                  3.67229
-    ## 2       AFN                 87.78391
-    ## 3       ALL                116.81890
-    ## 4       AMD                401.85491
-    ## 5       ANG                  1.79423
-    ## 6       AOA                429.35068
-    ## 7       ARS                138.70133
-    ## 8       AUD                  1.46778
-    ## 9       AWG                  1.80503
-    ## 10      AZN                  1.70043
+    ##    currency one_USD_is_equivalent_to
+    ## 1       AED                  3.67299
+    ## 2       AFN                 77.50220
+    ## 3       ALL                101.25030
+    ## 4       AMD                413.44991
+    ## 5       ANG                  1.80265
+    ## 6       AOA                829.00004
+    ## 7       ARS                350.01992
+    ## 8       AUD                  1.58582
+    ## 9       AWG                  1.80000
+    ## 10      AZN                  1.70231
 
 ### Historical exchange rates
 
@@ -62,11 +73,11 @@ Here’s an example of how to get exchange rates for some currency pairs:
 ``` r
 # Retrieve AUD to USD exchange rates
 au <- historical_exchange_rates("AUD", to = "USD",
-                          start_date = "2010-01-01", end_date = "2020-06-30")
+                          start_date = "2013-01-01", end_date = "2023-06-30")
 
 # Retrieve AUD to EUR exchange rates
 ae <- historical_exchange_rates("AUD", to = "EUR",
-                          start_date = "2010-01-01", end_date = "2020-06-30")
+                          start_date = "2013-01-01", end_date = "2023-06-30")
 
 # Combine
 cur <- au %>% left_join(ae, by = "date")
@@ -75,12 +86,12 @@ head(cur)
 ```
 
     ##         date one_AUD_equivalent_to_x_USD one_AUD_equivalent_to_x_EUR
-    ## 1 2010-01-01                    0.898084                    0.624103
-    ## 2 2010-01-02                    0.898084                    0.624103
-    ## 3 2010-01-03                    0.898084                    0.624103
-    ## 4 2010-01-04                    0.912623                    0.632711
-    ## 5 2010-01-05                    0.912011                    0.634840
-    ## 6 2010-01-06                    0.920736                    0.639223
+    ## 1 2013-01-01                     1.03746                    0.785518
+    ## 2 2013-01-02                     1.04997                    0.795034
+    ## 3 2013-01-03                     1.04722                    0.800920
+    ## 4 2013-01-04                     1.04837                    0.800502
+    ## 5 2013-01-05                     1.04837                    0.800502
+    ## 6 2013-01-06                     1.04916                    0.800944
 
 And to plot the exchange rate data:
 
@@ -107,7 +118,7 @@ cur %>%
     limits = c(0, 1.5)
     ) +
   labs(
-    title = "AUD to USD and EUR 2010 to 2020",
+    title = "AUD to USD and EUR 2013 to 2023",
     subtitle = "Plotting the Australian Dollar against the USD and Euro",
     y = "Exchange Rate"
     ) +
@@ -122,6 +133,12 @@ cur %>%
     legend.title = element_blank()
     ) 
 ```
+
+    ## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+    ## ℹ Please use `linewidth` instead.
+    ## This warning is displayed once every 8 hours.
+    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+    ## generated.
 
 ![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
@@ -204,9 +221,9 @@ df <- data.frame(years, nominal_prices)
 df$in_2008_dollars <- adjust_for_inflation(nominal_prices, years, "US", to_date = 2008)
 ```
 
-    ## Generating URL to request all 299 results
+    ## Generating URL to request all 297 results
     ## Retrieving inflation data for US 
-    ## Generating URL to request all 62 results
+    ## Generating URL to request all 63 results
 
 ``` r
 df
@@ -308,6 +325,13 @@ control strategies focused on zoonotic hosts: A scoping
 review*](https://journals.plos.org/plosntds/article?id=10.1371/journal.pntd.0010568),
 PLoS Neglected Tropical Diseases, Volume 16 (7), July 2022.
 
+Thielen, F.W., Heine, R.J.S.D., Berg, S. van den, Ham, R.M.T. ten and
+Groot, C.A.U. (2022). [Towards sustainability and affordability of
+expensive cell and gene therapies? Applying a cost-based pricing model
+to estimate prices for Libmeldy and
+Zolgensma](https://www.sciencedirect.com/science/article/pii/S1465324922007861),
+Cytotherapy \[online\] <doi:10.1016/j.jcyt.2022.09.002>.
+
 ### Guides and tutorials
 
 How to [*Convert Between Currencies Using
@@ -325,15 +349,13 @@ can be included here.
 
 When reporting an issue, please include:
 
--   Example code that reproduces the **observed** behavior.
--   An explanation of what the **expected** behavior is.
--   A specific url you’re attempting to retrieve R code from (if that’s
-    what your issue concerns)
+- Example code that reproduces the **observed** behavior.
+- An explanation of what the **expected** behavior is.
 
 For feature requests, raise an issue with the following:
 
--   The desired functionality
--   Example inputs and desired output
+- The desired functionality
+- Example inputs and desired output
 
 **Pull Requests**
 
@@ -343,6 +365,6 @@ email me with your idea.
 Any new functions should follow the conventions established by the the
 package’s existing functions. Please ensure
 
--   Functions are sensibly named
--   The **intent** of the contribution is clear
--   At least one example is provided in the documentation
+- Functions are sensibly named
+- The **intent** of the contribution is clear
+- At least one example is provided in the documentation
