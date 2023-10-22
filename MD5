@@ -1,8 +1,8 @@
-dbfe46ffa23901134b1f5b251b943edc *DESCRIPTION
+16269f56cee223a586a4b1ff84c1c78f *DESCRIPTION
 7ca76ced37bb437dcf9f1b5970f8e049 *LICENSE
 494bb63e73dabae28b8dcf5bca3a33b8 *NAMESPACE
 ce2c6d45a4b6a42c41d8acfc5c1f9aa1 *R/adjust_for_inflation.R
-d0fddc68cca1585c38756cc10235b245 *R/currencies.R
+e25ea8de7a4e63daf08007de24eeb0c4 *R/currencies.R
 a1fb051620ff15f4324ba8ab96207bb2 *R/extract_salary.R
 8b51221da5f5242afbf29c63e0245dbf *R/format.R
 934b8fea6e5e33fdd8bd83b04cebf1fb *R/priceR.R
