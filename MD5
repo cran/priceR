@@ -1,13 +1,13 @@
-16269f56cee223a586a4b1ff84c1c78f *DESCRIPTION
+39c819dd2bad6a9d3a8b269f36f81250 *DESCRIPTION
 7ca76ced37bb437dcf9f1b5970f8e049 *LICENSE
 494bb63e73dabae28b8dcf5bca3a33b8 *NAMESPACE
-ce2c6d45a4b6a42c41d8acfc5c1f9aa1 *R/adjust_for_inflation.R
+295969210aab13226430b8f847203e8d *R/adjust_for_inflation.R
 e25ea8de7a4e63daf08007de24eeb0c4 *R/currencies.R
 a1fb051620ff15f4324ba8ab96207bb2 *R/extract_salary.R
 8b51221da5f5242afbf29c63e0245dbf *R/format.R
 934b8fea6e5e33fdd8bd83b04cebf1fb *R/priceR.R
 657753c601708cc9d809ce91495419d1 *R/round_to_nearest.R
-bf351e77abfaddd1fed77215a56048ae *README.md
+af6de5370abbd42db2edf9f0371d4b58 *README.md
 0bc8db4ca5bad252db321e4798bc0753 *data/currency_info.rda
 fd0467e05c2d639d7ddaf9e29edcb535 *man/adjust_for_inflation.Rd
 b29f50298f62dd6e75dcb751b990d5af *man/append_exchangeratehost_access_key.Rd
@@ -36,7 +36,7 @@ d46c6e47e205d657327b6e0830dcc32f *man/round_down_to_nearest.Rd
 6c8fd29131d3a3d96582fbe15d4423b7 *man/round_to_nearest.Rd
 c33af7b737f8b2471e7c001710ad349d *man/round_up_to_nearest.Rd
 7a22b80fe6dd0dc4ce03c531567b4109 *man/show_countries.Rd
-c6ef0b04d288497cf8cbd4f44bd1bc09 *man/url_all_results.Rd
+7d34a0742649a3a4a475b6ee102df837 *man/url_all_results.Rd
 c165b96cd8573deea984c1d74e413df3 *tests/testthat.R
 3ad3b2dd93b5142f9b80a17642394064 *tests/testthat/helper-adjust_for_inflation.R
 3f546a524749bcb439b39d16e70c2572 *tests/testthat/test_adjust_for_inflation.R
