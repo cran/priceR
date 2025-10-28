@@ -1,13 +1,13 @@
-39c819dd2bad6a9d3a8b269f36f81250 *DESCRIPTION
+b1c68ef619b8793621e7a807cfa98588 *DESCRIPTION
 7ca76ced37bb437dcf9f1b5970f8e049 *LICENSE
 494bb63e73dabae28b8dcf5bca3a33b8 *NAMESPACE
 295969210aab13226430b8f847203e8d *R/adjust_for_inflation.R
 e25ea8de7a4e63daf08007de24eeb0c4 *R/currencies.R
-a1fb051620ff15f4324ba8ab96207bb2 *R/extract_salary.R
+38b8a5931772034701f8c7bd10d6d0ce *R/extract_salary.R
 8b51221da5f5242afbf29c63e0245dbf *R/format.R
 934b8fea6e5e33fdd8bd83b04cebf1fb *R/priceR.R
 657753c601708cc9d809ce91495419d1 *R/round_to_nearest.R
-af6de5370abbd42db2edf9f0371d4b58 *README.md
+aaf6cdb4a154c7b8902d7fef47be934c *README.md
 0bc8db4ca5bad252db321e4798bc0753 *data/currency_info.rda
 fd0467e05c2d639d7ddaf9e29edcb535 *man/adjust_for_inflation.Rd
 b29f50298f62dd6e75dcb751b990d5af *man/append_exchangeratehost_access_key.Rd
@@ -41,4 +41,3 @@ c165b96cd8573deea984c1d74e413df3 *tests/testthat.R
 3ad3b2dd93b5142f9b80a17642394064 *tests/testthat/helper-adjust_for_inflation.R
 3f546a524749bcb439b39d16e70c2572 *tests/testthat/test_adjust_for_inflation.R
 040f70aa4a155fbd724f5fd81c3d5023 *tests/testthat/test_format.R
-b7d2b3a6373e5d59e46b99eefb31a9ec *tests/working/new-forex-api.R
